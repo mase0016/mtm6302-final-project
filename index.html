@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architect Finance | Professional Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body class="bg-[#f8f9fa] text-zinc-900">
+
+    <div class="flex min-h-screen">
+        <aside class="w-72 bg-[#1a1c1c] text-[#e2e2e2] hidden lg:flex flex-col p-8 fixed h-full shadow-2xl z-50">
+            <div class="mb-12">
+                <h2 class="text-lg font-bold tracking-tighter uppercase font-heading text-white">Architect_Finance</h2>
+                <p class="text-[10px] text-zinc-500 tracking-widest mt-1">INTERNAL ASSET TRACKER</p>
+            </div>
+            
+            <nav class="space-y-6 flex-grow">
+                <a href="#" class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-white border-l-2 border-[#2563eb] pl-4">
+                    <span class="material-symbols-outlined text-xl">grid_view</span> Overview
+                </a>
+                <a href="#" class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-all pl-4">
+                    <span class="material-symbols-outlined text-xl">receipt_long</span> History
+                </a>
+                <a href="#" class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-white transition-all pl-4">
+                    <span class="material-symbols-outlined text-xl">insert_chart</span> Analytics
+                </a>
+            </nav>
+
+            <div class="pt-8 border-t border-zinc-800">
+                <p class="text-[10px] italic text-zinc-600">Algonquin College / MTM6302 Final</p>
+            </div>
+        </aside>
+
+        <main class="flex-grow lg:ml-72 p-12">
+            <div class="max-w-6xl mx-auto">
+                <header class="mb-12 flex justify-between items-end border-b border-zinc-300 pb-6">
+                    <div>
+                        <h1 class="text-5xl font-bold uppercase font-heading tracking-tighter">Financial Log</h1>
+                        <p class="text-sm font-medium text-zinc-500 mt-2 uppercase tracking-widest">Workspace_01 / <span id="current-date">APRIL 2026</span></p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] font-bold text-zinc-400 uppercase">Status</p>
+                        <p class="text-xs font-bold text-[#2563eb] flex items-center gap-2">
+                            <span class="w-2 h-2 bg-[#2563eb] rounded-full animate-pulse"></span> SYSTEM ACTIVE
+                        </p>
+                    </div>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                    <section class="md:col-span-8 space-y-8">
+                        <div class="bg-white border border-zinc-200 p-10 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-6 opacity-5 pointer-events-none">
+                                <span class="material-symbols-outlined text-9xl">account_balance</span>
+                            </div>
+                            
+                            <h3 class="text-xs font-bold uppercase text-zinc-400 tracking-widest mb-4">Current Net Balance</h3>
+                            <div class="text-7xl font-bold font-heading tracking-tighter" id="balance-amount">$2000.00</div>
+                            
+                            <div class="grid grid-cols-2 gap-6 mt-12">
+                                <div class="bg-[#f3f3f4] p-6 border-l-4 border-zinc-900">
+                                    <p class="text-[10px] uppercase font-bold text-zinc-500 mb-1">Total Credited</p>
+                                    <p class="text-3xl font-bold font-heading" id="total-income">$0.00</p>
+                                </div>
+                                <div class="bg-[#f3f3f4] p-6 border-l-4 border-[#ba1a1a]">
+                                    <p class="text-[10px] uppercase font-bold text-zinc-500 mb-1">Total Debited</p>
+                                    <p class="text-3xl font-bold font-heading" id="total-expenses">$0.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-zinc-200 p-8 shadow-sm">
+                            <div class="flex justify-between items-center mb-8">
+                                <h3 class="font-bold uppercase tracking-widest text-sm">Archival History</h3>
+                                <span class="text-[10px] font-bold text-zinc-400">LOG_v1.0</span>
+                            </div>
+                            <div id="transaction-list" class="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+                                <p class="text-sm text-zinc-400 italic text-center py-10">Initializing database... No records found.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="md:col-span-4 bg-white p-8 border border-zinc-200 shadow-sm h-fit sticky top-12">
+                        <h3 class="font-bold uppercase mb-8 tracking-widest text-sm border-b border-zinc-100 pb-4">Add New Entry</h3>
+                        <form id="transaction-form" class="space-y-8">
+                            <div class="group">
+                                <label class="block text-[10px] uppercase font-bold mb-2 text-zinc-400 group-focus-within:text-[#2563eb] transition-colors">Description</label>
+                                <input type="text" id="desc" class="w-full bg-transparent border-0 border-b-2 border-zinc-200 focus:ring-0 focus:border-[#2563eb] text-sm py-2 px-0 transition-all placeholder:text-zinc-300" placeholder="e.g. Studio Lease" required>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold mb-2 text-zinc-400">Amount (USD)</label>
+                                <input type="number" id="amount" class="w-full bg-transparent border-0 border-b-2 border-zinc-200 focus:ring-0 focus:border-[#2563eb] text-2xl font-bold py-2 px-0 transition-all" placeholder="0.00" step="0.01" required>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold mb-2 text-zinc-400">Asset Category</label>
+                                <select id="category" class="w-full bg-transparent border-0 border-b-2 border-zinc-200 focus:ring-0 focus:border-[#2563eb] text-sm py-2 px-0 uppercase font-bold tracking-wider cursor-pointer">
+                                    <option value="Income">Credited (Income)</option>
+                                    <option value="Housing">Housing / Studio</option>
+                                    <option value="Food">Food / Dining</option>
+                                    <option value="Transport">Transport / Transit</option>
+                                    <option value="Tech">Tech / Hardware</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-[#1a1c1c] text-white py-4 mt-6 uppercase text-xs font-bold tracking-[0.2em] hover:bg-[#2563eb] transition-all shadow-lg active:scale-95">
+                                Add Transaction
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+:root {
+    --blueprint-blue: #2563eb;
+    --ink-black: #1a1c1c;
+    --error-red: #ba1a1a;
+}
+
+/* Custom Typography & Grids */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.05em;
+}
+
+/* Input Focus Transitions */
+input:focus::placeholder {
+    color: transparent;
+}
+
+/* Custom Scrollbar for the History section */
+#transaction-list::-webkit-scrollbar {
+    width: 3px;
+}
+
+#transaction-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#transaction-list::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+}
+
+/* Animation for adding items */
+.transaction-item {
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    border-bottom: 1px solid #f3f3f4;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Removing default number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
